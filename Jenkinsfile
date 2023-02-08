@@ -13,7 +13,7 @@ pipeline {
         stage('Push') {
             steps {
                 echo 'Starting push...'
-                sh "docker login -u lostlegend2702 -p lostworld"
+                sh "docker login -u lostlegend2702 -p password"
                 sh "docker push lostlegend2702/pipeline:${env.BUILD_NUMBER}.0"
                 echo 'Push completed' 
             }
@@ -28,7 +28,7 @@ pipeline {
                 sh "git config user.email 'vedratan8@gmail.com'"
                 sh "git add ."
                 sh "git commit -m 'Jenkins build version ${env.BUILD_NUMBER}.0'"
-                sh "git config --local credential.helper '!f() { echo username=VedRatan; echo password=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; }; f'"
+                sh "git config --local credential.helper '!f() { echo username=VedRatan; echo password=PAT; }; f'"
                 sh "git push origin master"
                 echo 'Update completed'   
             }
